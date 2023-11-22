@@ -155,11 +155,13 @@ btnCreateEl.addEventListener('click', () => {
 });
 btnDestroyEl.addEventListener('click', onClearsElements);
 
-function onStartColorChange() {
-  colorChangeInterval = setInterval(() => {
-    onAddsElements();
-    changeColors();
-  }, 100);
+function onStartColorChange(event) {
+  if (event.which === 1) {
+    colorChangeInterval = setInterval(() => {
+      onAddsElements();
+      changeColors();
+    }, 100);
+  }
 }
 
 function onStopColorChange() {
