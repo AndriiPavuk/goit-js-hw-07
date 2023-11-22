@@ -1,14 +1,23 @@
-const ingredients = ['Potatoes', 'Mushrooms', 'Garlic', 'Tomatoes', 'Herbs', 'Condiments'];
+const images = [
+  {
+    url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'White and Black Long Fur Cat',
+  },
+  {
+    url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+  },
+  {
+    url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Group of Horses Running',
+  },
+];
 
-const ingredientsListRef = document.querySelector('#ingredients');
+const galleryRef = document.querySelector('.gallery');
 
-const makeIngredients = ingredients => {
-  return ingredients.map(ingredient => {
-    const ingredientRef = document.createElement('li');
-    ingredientRef.classList.add('item');
-    ingredientRef.textContent = ingredient;
-    return ingredientRef;
-  });
-};
+const createGalleryImg = ({ url, alt }) =>
+  `<li class="gallery__item"><img class="gallery__image" src="${url}" alt="${alt}"></img></li>`;
 
-ingredientsListRef.append(...makeIngredients(ingredients));
+const createGallery = images.map(createGalleryImg).join('');
+
+galleryRef.insertAdjacentHTML('afterbegin', createGallery);

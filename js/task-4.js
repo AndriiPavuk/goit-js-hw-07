@@ -1,15 +1,24 @@
-const decrementBtnRef = document.querySelector('[data-action="decrement"]');
-const incrementBtnRef = document.querySelector('[data-action="increment"]');
-const valueRef = document.querySelector('#value');
+const formRef = document.querySelector('.login-form');
 
-let counterValue = 0;
+formRef.addEventListener('submit', onFormSubmit);
 
-decrementBtnRef.addEventListener('click', onDecrementBtnClick);
-incrementBtnRef.addEventListener('click', onIncrementBtnClick);
+function onFormSubmit(event) {
+  event.preventDefault();
 
-function onDecrementBtnClick() {
-  valueRef.textContent = counterValue -= 1;
-}
-function onIncrementBtnClick() {
-  valueRef.textContent = counterValue += 1;
+  const mail = event.currentTarget.elements.email.value;
+  const password = event.currentTarget.elements.password.value;
+
+  const formData = {
+    mail,
+    password,
+  };
+
+  for (const value of Object.values(formData)) {
+    if (!value) {
+      alert('Please fill all fields');
+      return;
+    }
+  }
+  console.log(formData);
+  formRef.reset();
 }
