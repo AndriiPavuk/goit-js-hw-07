@@ -149,6 +149,7 @@ let colorChangeInterval;
 
 btnCreateEl.addEventListener('mousedown', onStartColorChange);
 btnCreateEl.addEventListener('mouseup', onStopColorChange);
+btnCreateEl.addEventListener('mouseleave', onStopColorChange);
 btnCreateEl.addEventListener('click', () => {
   onAddsElements();
   changeColors();
